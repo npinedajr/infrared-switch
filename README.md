@@ -1,4 +1,4 @@
-# infraredSwitch
+# Infrared Switch
 
 The infrared switch consists of two components, where one program sends a infrared signal (IRRemote.ino) and 
 the other program peforms certain actions when a specific signal is recieved (IRReciever.ino). Both of these programs 
