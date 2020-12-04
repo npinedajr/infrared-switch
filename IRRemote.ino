@@ -3,7 +3,7 @@
 
 IRsend irsend;
 
-unsigned long pressedMillis; //Will track at what millisecond the button connected to pin 8 has been pressed. 
+unsigned long pressedMillis = 0; //Will track at what millisecond the button connected to pin 8 has been pressed. 
 const unsigned holdPeriod = 1500; //The button must be held for 1.5 seconds to be considered a long press. Can be adjusted based on needs.
 bool longPress; 
 int currentState;
@@ -28,11 +28,11 @@ void loop()
   if(currentState == HIGH && previousState == LOW){
     pressedMillis = millis();
   }
-  if(currentState == HIGH && (millis()-pressedMillis)>holdPeriod){
+  if(currentState == HIGH && (millis()-pressedMillis)>=holdPeriod){
     irsend.sendNEC(0xFECA34,32);
     longPress = true;
   }
-  if(currentState == LOW && previousState == HIGH && longPress == false){
+  if(currentState == LOW && previousState == HIGH && longPress == false && (millis()-pressedMillis)<holdPeriod){
     irsend.sendNEC(0xFEA857,32);
   } else {
     longPress = false;
