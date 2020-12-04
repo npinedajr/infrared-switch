@@ -11,7 +11,7 @@ int previousState; //previousState tracks if currentState is HIGH or LOW in the 
 
 void setup()
 {
-  pinMode(2, INPUT); //Pin 8 of an Arduino will have a button connected, which will serve as input.
+  pinMode(2, INPUT); //Pin 2 of an Arduino will have a button connected, which will serve as input.
   longPress = false; 
   currentState = LOW;
   previousState = LOW;
