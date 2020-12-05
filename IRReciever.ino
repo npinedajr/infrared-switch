@@ -1,8 +1,8 @@
 // Include IR Remote Library by Ken Shirriff
 #include <IRremote.h>
  
-const int RECV_PIN = 10; //The infrared reciever will be connected to pin 10 of the Arduino.
-const int RELAY = 2; //The relay module will be connected to pin 2 of the Arduino
+int RECV_PIN = 10; //The infrared reciever will be connected to pin 10 of the Arduino.
+int RELAY = 2; //The relay module will be connected to pin 2 of the Arduino
  
 // Define irrecev and results Objects
 IRrecv irrecv(RECV_PIN); //Define a IRRecv object, which will be utilizing the infrared reciever.
