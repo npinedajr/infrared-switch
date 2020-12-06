@@ -9,9 +9,8 @@ bool longPress;
 int currentState;
 int previousState; //previousState tracks if currentState is HIGH or LOW in the previous loop.
 
-void setup()
-{
-  pinMode(2, INPUT); //Pin 2 of an Arduino will have a button connected, which will serve as input.
+void setup(){
+  pinMode(2, INPUT); //Pin 8 of an Arduino will have a button connected, which will serve as input.
   longPress = false; 
   currentState = LOW;
   previousState = LOW;
@@ -22,18 +21,17 @@ void setup()
  * to the Arduino will send a signal that a infrared reciever will decode. If the button is pressed for 
  * less than 1.5 seconds, then the infrared led will send a different signal for the infrared reciever to decode. 
  */
-void loop()
-{
+void loop(){
   currentState = digitalRead(2); // When the button connected to pin 8 in the Arduino is pressed, currentState will be HIGH. Otherwise, it will be LOW. 
   if(currentState == HIGH && previousState == LOW){
     pressedMillis = millis();
   }
   if(currentState == HIGH && (millis()-pressedMillis)>=holdPeriod){
-    irsend.sendNEC(0xFECA34,32);
+    irsend.sendNEC(0xFECA35,32);
     longPress = true;
   }
-  if(currentState == LOW && previousState == HIGH && longPress == false && (millis()-pressedMillis)<holdPeriod){
-    irsend.sendNEC(0xFEA857,32);
+  if(currentState == LOW && previousState == HIGH && longPress == false && (millis()-pressedMillis)<holdPeriod ){
+    irsend.sendNEC(0xFE8A75,32);
   } else {
     longPress = false;
   }
